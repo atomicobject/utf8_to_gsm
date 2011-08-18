@@ -3,13 +3,14 @@ require "utf8_to_gsm/version"
 require 'rubygems'
 require 'unidecoder'
 
+# See the {file:README.md README file} regarding usage of this library.
 module Utf8ToGsm
 	# Mapping of GSM default alphabet to Unicode code points
 	# This is only the default GSM alphabet, and does not feature
 	# single shift or locking shift tables. Only values which differ
   # between GSM and Unicode are provided.
   # Mapping of values courtesy of Unicode, Inc.
-  # http://unicode.org/Public/MAPPINGS/ETSI/GSM0338.TXT
+  # {http://unicode.org/Public/MAPPINGS/ETSI/GSM0338.TXT}
   
 	GSM_TO_UNICODE = [
 	0x00,	0x40,	 # COMMERCIAL AT	@
@@ -66,7 +67,7 @@ module Utf8ToGsm
 	0x7F,	0xE0,	 # LATIN SMALL LETTER A WITH GRAVE	à
 	]
 
-  # These are for transliterations which are broken or mangled in our transliteration library
+  # Mapping of Unicode code points to the GSM default alphabet for transliterations which are broken in unidecoder.
   ASCII_TO_UNICODE = [
   [0x3C,0x3C], 0xAB,    # Left Chevron Transliteration is broken in Unidecoder 1.1.1, comment out to use Unidecoder version
   [0x54,0x4D], 0x2122,  # Trademark Transliteration is broken in Unidecoder 1.1.1, comment out to use Unidecoder version
@@ -82,12 +83,16 @@ module Utf8ToGsm
   # Place the Unicode to ASCII mapping in a hash to make lookup easy
   ASCII_TO_UNICODE.each_slice(2){|ascii,unicode|@unicode_to_ascii[unicode] = ascii}
 
-  # Array of the 1-to-1 Unicode to GSM Mappings for fast/easy pass-through without hash lookup
+  # Array representing the 1-to-1 Unicode to GSM mappings which do not need to be converted 
   ONE_TO_ONE = ((0x61..0x7A).to_a + (0x41..0x5A).to_a + (0x25..0x3F).to_a + (0x20..0x23).to_a + [0x1B,0x0A,0x0D])
 
-	def self.to_gsm string 
+  # Converts a valid UTF-8 string into a string composed of 8-bit GSM character sequences.
+  # 
+  # @param [String] utf8_string A string containing valid UTF-8 character sequences.
+  # @return [String] Binary sequence (string) containing 8-bit GSM character sequences.
+	def self.to_gsm utf8_string 
     # Unpack the string (presumed to be UTF-8) to it's binary value
-		string.unpack('U*').collect{|unicode|
+		utf8_string.unpack('U*').collect{|unicode|
       if ONE_TO_ONE.include?(unicode)
         # Check if the binary value for the character is in 'identical' Unicode to GSM ranges
         unicode
