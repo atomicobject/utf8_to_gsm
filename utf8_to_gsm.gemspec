@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "utf8_to_gsm"
   s.version     = Utf8ToGsm::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Justin Kulesza","Matt Fletcher", "David Crosby", "Micah Alles"]
-  s.email       = ["justin.kulesza@gmail.com","fletcher@atomicobject.com", "crosby@atomicobject.com", "alles@atomicobject.com"]
+  s.authors     = ["Justin Kulesza"]
+  s.email       = ["justin.kulesza@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{`Utf8ToGsm` provides functionality to convert UTF-8 characters to their GSM equivalents.}
   s.description = %q{`Utf8ToGsm` provides functionality to convert UTF-8 characters to their GSM equivalents.}
