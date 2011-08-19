@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("bundler", ">= 1.0.0")
   s.add_development_dependency("rake", ">= 0.8.0")
   s.add_development_dependency("yard", "~> 0.6.4")
+  s.add_development_dependency("bluecloth", "~> 2.1.0")
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
