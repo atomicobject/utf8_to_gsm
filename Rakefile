@@ -2,6 +2,7 @@ require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'rake/clean'
 require 'yard'
+require 'bluecloth'
 
 Bundler::GemHelper.install_tasks
 
