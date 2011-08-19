@@ -1,5 +1,7 @@
 *.gem
 .bundle
+.yardoc
+doc
 bin
 Gemfile.lock
 pkg/*
