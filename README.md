@@ -15,6 +15,7 @@ Usage
 Provide `Utf8ToGsm.to_gsm` a UTF-8 string that you would like to convert into a GSM-compatible string.
 
 `Utf8ToGsm` will go through each character in the string:
+
 * If the character has an exact GSM equivalent, it will be used.
 * Otherwise, the UTF-8 character is transliterated to ASCII.
 * If no suitable character(s) is available in ASCII, a replacement symbol (question mark: ?) will be used.
